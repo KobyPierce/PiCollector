@@ -21,4 +21,4 @@ The ultimate goal of PiCollector is to provide a versatile and user-friendly too
 While the project is not yet ready for public contributions, feedback and suggestions are welcome to help shape its development. Stay tuned for updates as the prototype evolves!
 
 ## License
-The project will be released under a license that encourages reuse, modification, and commercial use, provided derivative works remain open source. The specific license is under consideration and will be finalized soon.
+This project is licensed under the Mozilla Public License 2.0. See the [LICENSE](LICENSE) file for details.
