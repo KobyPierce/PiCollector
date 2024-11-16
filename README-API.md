@@ -1,7 +1,7 @@
 # PiCollector API Documentation
 
 ## Overview
-The PiCollector API serves as the backend for the PiCollector platform, facilitating data collection, session management, and device configuration. Currently, the API provides mock data for frontend development and testing purposes. 
+The PiCollector API serves as the backend for the PiCollector platform, enabling live data collection, session management, and device configuration. Recent updates include the integration of QR code-based steering angle tracking and cumulative rotation data, along with responsive endpoints for synchronized operation with the frontend.
 
 ---
 
@@ -26,7 +26,7 @@ For local development: `http://localhost:5000`
 
 ### 2. `/api/collect-data`
 - **Method:** GET
-- **Description:** Simulates live data collection by returning mock images and gyroscope data.
+- **Description:** Returns live data, including cumulative rotation (from the QR code tracking) and mock images for testing.
 - **Response:**
   ```json
   {
@@ -34,10 +34,7 @@ For local development: `http://localhost:5000`
       "http://localhost:5000/static/temp_image_1.jpg",
       "http://localhost:5000/static/temp_image_2.jpg"
     ],
-    "gyro_data": [
-      { "timestamp": 123456789, "angle": 30 },
-      { "timestamp": 123456790, "angle": 31 }
-    ]
+    "cumulative_rotation": 45.75
   }
   ```
 
@@ -58,7 +55,7 @@ For local development: `http://localhost:5000`
 
 ### 4. `/api/session/<id>`
 - **Method:** GET
-- **Description:** Retrieves details for a specific session, including images and gyroscope data.
+- **Description:** Retrieves details for a specific session, including collected images and cumulative rotation data.
 - **Path Parameter:**
   - `id`: The session ID (e.g., `session1`).
 - **Response:**
@@ -70,9 +67,9 @@ For local development: `http://localhost:5000`
       "http://localhost:5000/static/session1_image_1.jpg",
       "http://localhost:5000/static/session1_image_2.jpg"
     ],
-    "gyro_data": [
-      { "timestamp": 123456789, "angle": 30 },
-      { "timestamp": 123456790, "angle": 31 }
+    "cumulative_rotation": [
+      { "timestamp": 123456789, "value": 30.5 },
+      { "timestamp": 123456790, "value": 31.0 }
     ]
   }
   ```
@@ -81,7 +78,7 @@ For local development: `http://localhost:5000`
 
 ### 5. `/api/settings`
 - **Method:** GET
-- **Description:** Returns mock configuration data for connected cameras and gyroscope devices.
+- **Description:** Returns mock configuration data for connected cameras and cumulative rotation tracking devices.
 - **Response:**
   ```json
   {
@@ -89,16 +86,16 @@ For local development: `http://localhost:5000`
       { "id": "camera1", "name": "Left Camera", "resolution": "1920x1080" },
       { "id": "camera2", "name": "Right Camera", "resolution": "1920x1080" }
     ],
-    "gyro": { "connected": true, "device_name": "iPhone Gyro" }
+    "tracking_device": { "connected": true, "device_name": "QR Code Tracker" }
   }
   ```
 
 ---
 
 ## Notes
-- **Mock Data:** All endpoints currently return placeholder data to simulate real functionality.
+- **Live Data:** The API now tracks cumulative rotation from the QR code tracking feature and sends this data to the frontend in real time.
 - **Health Check:** Use the `/health` endpoint to confirm the API is running before making other requests.
-- **Future Development:** The mock responses will be replaced with real functionality as development progresses.
+- **Future Development:** The mock responses will be replaced with real data as integration with Raspberry Pi hardware progresses.
 
 ---
 
@@ -108,7 +105,7 @@ For local development: `http://localhost:5000`
    ```bash
    curl http://localhost:5000/health
    ```
-2. **Fetch Mock Data:**
+2. **Fetch Live Data:**
    ```bash
    curl http://localhost:5000/api/collect-data
    ```
@@ -135,4 +132,4 @@ For local development: `http://localhost:5000`
   ├── mock_data.py
   ```
 
-This file will evolve as the API is developed further to include real functionality.
+This file will continue to evolve as the API is fully integrated with real data collection and hardware functionality.
