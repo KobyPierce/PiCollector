@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #080F25;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #080F25;
+  color: #ffffff;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 80px;
+}
+
+@media screen and (min-width: 769px) {
+  .content {
+    width: calc(100% - 406px);
+    margin-left: 406px;
+    margin-top: 0;
+  }
+}
