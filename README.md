@@ -2,10 +2,34 @@
 
 **Helping developers effortlessly collect and refine training data for self-driving applications.**
 
+![Project Logo](./assets/Pi-Collector-Logo.svg)
+
 ## Overview
 PiCollector is a modern and intuitive data collection platform designed to streamline the process of gathering synchronized image and steering angle data for machine learning applications, particularly for self-driving RC cars. This project aims to simplify the data collection process, making it accessible even for non-technical users.
 
 The application runs headlessly on a Raspberry Pi, providing a sleek web interface accessible via a phone or laptop on the local network. Users can configure camera setups, connect gyroscopic devices (e.g., smartphones), and collect labeled data efficiently at customizable frame rates. 
+
+## Early Stage Prototype
+Below are some prototype designs for the PiCollector platform:
+
+### Desktop Views
+
+#### Collect Data Page
+![Collect Data Prototype](./assets/collect-data-prototype.png)
+
+#### Review Data Page
+![Review Data Prototype](./assets/review-data-prototype.png)
+
+#### Edit Data Page
+![Edit Data Prototype](./assets/edit-data-prototype.png)
+
+### Molbie Views
+
+#### Collect Data Page (Minimized NavBar)
+![Collect Data Prototype Phone Minimized](./assets/collect-data-prototype-navbar-min.png)
+
+#### Collect Data Page (Expanded NavBar)
+![Collect Data Prototype Phone Expanded](./assets/collect-data-prototype-navbar-expanded.png)
 
 ## Current Status
 This project has progressed significantly and is now in the **active development phase**. The following milestones have been achieved so far:
